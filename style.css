@@ -1,0 +1,32 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 30px auto 0 auto;
+  width: 80%;
+  text-align: right;
+  font-family: "courier"monospace;
+}
+
+
+canvas {
+  margin: auto;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.reloadButton {
+  padding: 20px;
+  opacity: 0.5;
+  background-color: #91e6ae;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 80px;
+}

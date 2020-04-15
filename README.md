@@ -1,1 +1,1 @@
-# doubleSnake
+# DoubleSnakeGame
