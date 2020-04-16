@@ -70,6 +70,8 @@ function play() {
   textAlign(LEFT);
   fill(255);
   text('RULES:', width * .84, 40);
+  text('Player White: Arrow Control', width * .84, 40);
+  text('Player Black: W,S,A,D', width * .84, 40);
   text('NO BACKWARD', width * .84, 60);
   text('DONT HIT THE WALL', width * .84, 80);
   text('DONT HIT YOURSELF', width * .84, 100);
