@@ -32,10 +32,12 @@ function Snake() {
         textAlign(CENTER, CENTER);
         fill(255,30,30);
         text('GAME OVER', width / 2, height / 2);
+        text('Crush', width / 2, height / 1.5);        
         fill(46, 87, 140);
         text(player,width/3,height/3.5);
         fill(255, 187, 41);
         text('WON',width/1.5,height/3.5);
+
         // this.total = 0;
         this.tail = [];
       }

@@ -62,6 +62,8 @@ function go() {
   background(93, 124, 161);
   fill(67, 71, 62);
   text('Click To Start', width / 2, height / 2);
+  text('Player 1: White / Arrow Control', width /2, height/1.2);
+  text('Player 2: Black / W,S,A,D', width /2, height/1.5);
 }
 
 function play() {
@@ -70,8 +72,6 @@ function play() {
   textAlign(LEFT);
   fill(255);
   text('RULES:', width * .84, 40);
-  text('Player White: Arrow Control', width * .84, 40);
-  text('Player Black: W,S,A,D', width * .84, 40);
   text('NO BACKWARD', width * .84, 60);
   text('DONT HIT THE WALL', width * .84, 80);
   text('DONT HIT YOURSELF', width * .84, 100);
