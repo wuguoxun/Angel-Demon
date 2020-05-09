@@ -32,7 +32,7 @@ function Snake() {
         textAlign(CENTER, CENTER);
         fill(255,30,30);
         text('GAME OVER', width / 2, height / 2);
-        text('Crush', width / 2, height / 1.5);        
+        text('Crush', width / 2, height / 1.5);
         fill(46, 87, 140);
         text(player,width/3,height/3.5);
         fill(255, 187, 41);
@@ -62,9 +62,10 @@ function Snake() {
   this.show = function(a, b,color) {
     fill(color);
     for (let i = 0; i < this.tail.length; i++) {
-      rect(this.tail[i].x, this.tail[i].y, scl, scl);
+      image(humanImg,this.tail[i].x, this.tail[i].y, scl, scl);
     }
     rect(this.x, this.y, scl, scl);
+    //angle
     textSize(64);
     text(this.score, a, b);
 
