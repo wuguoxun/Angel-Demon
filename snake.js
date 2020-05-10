@@ -28,54 +28,80 @@ function Snake() {
       let pos = this.tail[i];
       let d = dist(this.x, this.y, pos.x, pos.y);
       if (d < 1) {
+        this.score = 0;
+
+        startOverSound.play();
+        // music.rate(1);
+        // fr = 1;
         textSize(64);
         textAlign(CENTER, CENTER);
-        fill(255,30,30);
-        text('GAME OVER', width / 2, height / 2);
-        text('Crush', width / 2, height / 1.5);
-        fill(46, 87, 140);
-        text(player,width/3,height/3.5);
-        fill(255, 187, 41);
-        text('WON',width/1.5,height/3.5);
+        fill(255, 30, 30);
+        text('Dead', width / 2, height / 2);
+        text(player,width/3,height/2);
 
-        // this.total = 0;
+        this.x = 0;
+        this.y = 0;
+        this.xspeed = 1;
+        this.yspeed = 0;
+        this.total = 0;
         this.tail = [];
       }
     }
   };
 
   this.update = function() {
-    for (let i = 0; i < this.tail.length - 1; i++) {
-      this.tail[i] = this.tail[i + 1];
+    // Expand snake
+    if (this.total === this.tail.length) {
+      for (var i = 0; i < this.tail.length - 1; i++) {
+        this.tail[i] = this.tail[i + 1];
+      }
     }
-    if (this.total >= 1) {
-      this.tail[this.total - 1] = createVector(this.x, this.y);
-    }
+    // Newest position
+    this.tail[this.total - 1] = createVector(this.x, this.y);
 
+    // Move snake
     this.x = this.x + this.xspeed * scl;
     this.y = this.y + this.yspeed * scl;
 
-    this.x = constrain(this.x, 0, width - scl);
-    this.y = constrain(this.y, 0, height - scl);
+    //hit screen die
+    // this.x = constrain(this.x, 0, width - scl);
+    // this.y = constrain(this.y, 0, height - scl);
+
+    // Keep on screen
+    if (this.x > width - scl) {
+      this.x = 0;
+    } else if (this.x < 0) {
+      this.x = width - scl;
+    }
+    if (this.y > height - scl) {
+      this.y = 0;
+    } else if (this.y < 0) {
+      this.y = height - scl;
+    }
   };
 
-  this.show = function(a, b,color) {
-    fill(color);
+
+  // Draw snake
+  this.show = function(a, b) {
     for (let i = 0; i < this.tail.length; i++) {
-      image(humanImg,this.tail[i].x, this.tail[i].y, scl, scl);
+      image(humanImg, this.tail[i].x, this.tail[i].y, scl, scl);
     }
-    rect(this.x, this.y, scl, scl);
+    image(angelImg,this.x, this.y, scl, scl);
     //angle
     textSize(64);
     text(this.score, a, b);
 
   };
 
-this.win = function(){
+  this.win = function() {
 
-  if (this.score >= 10) {
-    state = 'won';
-  }
-};
+    if (this.score >= 10) {
+      state = 'won';
+      musicWon.play();
+
+    }
+  };
+
+
 
 }

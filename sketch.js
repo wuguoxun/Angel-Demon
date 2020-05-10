@@ -2,33 +2,56 @@ let a = 30;
 let b = 30;
 let s;
 let k;
-let scl = 20;
-let color = 0;
+let scl = 50;
 let player = [{
-  name: "Player White"
+  name: "Angel"
 }, {
-  name: "Player Black"
+  name: "Demon"
 }];
 let food;
 let score = 0;
 let state = 'go';
 let playing = true;
+
 let humanImg;
+let angelImg;
+let devilImg;
+
+let fr = 8;
+
+let eatSound;
+let startOverSound;
+let hello;
+let music;
+let musicRate = 1;
+
 
 function preload() {
 
-  humanImg = loadImage('image/human.JPG');
+  humanImg = loadImage('image/human.png');
+  angelImg = loadImage('image/angel.png');
+  devilImg = loadImage('image/devil.png');
+
+  eatSound = loadSound('music/Alert/Alert-06.mp3');
+  startOverSound = loadSound('music/Voice/Male/Voice-Hello-01.mp3');
+  hello = loadSound('music/Voice/Male/Voice-Hello-01.mp3');
+  music = loadSound('music/Music/Music-01.mp3');
+  musicWon = loadSound('music/Music/bg_music.mp3');
 
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1200, 600);
   textSize(64);
   textAlign(CENTER, CENTER);
+  print_links();
+  textFont('Love Ya Like A Sister');
+
   s = new Snake();
   k = new Snake();
-  frameRate(10);
+  frameRate(fr);
   pickLocation();
+
 }
 
 function pickLocation() {
@@ -58,47 +81,70 @@ function draw() {
 }
 
 function go() {
-  background(93, 124, 161);
+  background(48, 117, 187);
   fill(67, 71, 62);
-  text('Click To Start', width / 2, height / 2);
-  text('Player 1: White / Arrow Control', width / 2, height / 1.2);
-  text('Player 2: Black / W,S,A,D', width / 2, height / 1.5);
+  text('Are you ready!? Click To Start', width / 2, height / 5.5);
+  text('Angel: Arrow Control', width / 2, height / 1.2);
+  text('Devil: W,S,A,D', width / 2, height / 1.5);
+  text('10 Point to win', width / 2, height / 3);
+  text('No BACKWARD,Dont hit YOURSELF', width / 2, height / 2);
 }
 
 function play() {
-  background(118, 153, 129);
-  textSize(16);
-  textAlign(CENTER);
-  fill(255);
-  text('RULES:', width * .84, 40);
-  text('NO BACKWARD', width * .84, 60);
-  text('DONT HIT THE WALL', width * .84, 80);
-  text('DONT HIT YOURSELF', width * .84, 100);
-  text('REACH 10 TO WIN!', width * .84, 120);
-  // first snake
-  s.death(player[0].name, 50, 50)
-  s.update();
-  s.show(a, b, color);
-  s.win();
-  // second snake
-  k.death(player[1].name, 50, 50)
-  k.update();
-  k.show(a, b + 60, color + 255);
-  k.win();
-  // food
-  if (s.eat(food)) {
-    pickLocation();
+  // setTimeout(1000);
+  if (!music.isPlaying()) {
+    music.play();
+  } else {
+    background(48, 137, 187);
+    textSize(16);
+    textAlign(CENTER);
+    fill(255);
+
+
+    if (s.eat(food)) {
+      eatSound.play();
+      fr += 2;
+      musicRate += 0.05;
+      music.rate(musicRate);
+      frameRate(fr);
+      pickLocation();
+    }
+
+    //white
+    if (k.eat(food)) {
+      eatSound.play();
+      fr += 2;
+      musicRate += 0.05;
+      music.rate(musicRate);
+      frameRate(fr);
+      pickLocation();
+    }
+
+    // first snake
+    s.death(player[0].name, 50, 50)
+    s.update();
+    s.show(a, b, color);
+    s.win();
+    // second snake
+    k.death(player[1].name, 50, 50)
+    k.update();
+    push();
+    tint(255, 53, 104);
+    k.show(a, b + 60, color);
+    pop();
+    k.win();
+    // food
+    //black
+    image(humanImg, food.x, food.y, scl, scl);
+
   }
-  if (k.eat(food)) {
-    pickLocation();
-  }
-  fill(255, 0, 100);
-  image(humanImg,food.x, food.y, scl, scl);
 }
 
 function won() {
   background(random(255), random(255), random(255));
-  text('YOU WIN!!', width / 2.6, height / 2);
+  text('YOU WIN!!', width / 2, height / 2);
+  text(player,width/3,height/3.5);
+
 }
 
 function mousePressed() {
@@ -138,7 +184,21 @@ function keyPressed() {
   } else if (keyCode === 65) {
     k.dir(-1, 0);
   } else if (keyCode === 80) {
+    if (!hello.isPlaying()) {
+      hello.play();
+    }
     playing = !playing;
     text('Paused', width / 2, height / 2);
+
   }
+}
+
+function print_links() {
+  print("https://discourse.processing.org/t/how-to-use-google-fonts-in-p5js-online-editor/6893");
+  print("https://www.youtube.com/watch?v=3BanVQvCN6U&feature=youtu.be");
+  print("https://fonts.google.com/specimen/Orbitron?selection.family=Orbitron");
+  print("https://developers.google.com/fonts/docs/getting_started");
+  print("new example adobe font: https://editor.p5js.org/kll/sketches/lhMj7jtAs");
+  print("example font file load: https://editor.p5js.org/kll/sketches/5eAJTcNGR");
+  print("example normal text: https://editor.p5js.org/kll/sketches/E7oh0oCjq");
 }

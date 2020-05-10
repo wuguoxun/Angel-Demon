@@ -9,10 +9,13 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <script src="libraries/p5.js"></script>
-  <script src="libraries/p5.sound.min.js"></script>
-  <script type="text/javascript" src="p5.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/style2.css">
   <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
@@ -21,13 +24,26 @@
 </head>
 
 <body>
-  <!-- <h2>NO BACKWARD</h2>
-    <h2>DON'T HIT THE WALL</h2>
-    <h2>DON'T HIT YOURSELF</h2> -->
 
-  <div id="theHead">Welcome to 你老母</div><br>
-    <a href="index.html" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" class="reloadButton">Return</a>
-  <button type="button" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" onclick="location.reload();" class="reloadButton">RESTART</button><br>
+
+  <div class="container">
+    <div class="center">
+      <button onclick="window.location.href = 'index.html';" style="--content: 'Return';">
+        <div class="left"></div>
+        Return
+        <div class="right"></div>
+      </button>
+      <button onclick="location.reload();" style="--content: 'Restart';">
+        <div class="left"></div>
+        Restart
+        <div class="right"></div>
+      </button>
+    </div>
+  </div>
+
+
+  <div id="canvas-container">
+  </div>
 
   <!-- <div id="newGame" onclick="runGame()" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'">New Game</div>
       <div id="creditBtn" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'" onclick="showCredits()">Credits</div>
