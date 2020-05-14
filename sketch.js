@@ -32,6 +32,9 @@ function preload() {
   angelImg = loadImage('image/angel.png');
   devilImg = loadImage('image/devil.png');
 
+  borderImg = loadImage('image/03_6x8 2.png');
+
+
   eatSound = loadSound('music/Alert/Alert-06.mp3');
   startOverSound = loadSound('music/Voice/Male/Voice-Hello-01.mp3');
   hello = loadSound('music/Voice/Male/Voice-Hello-01.mp3');
@@ -44,8 +47,8 @@ function setup() {
   createCanvas(1200, 600);
   textSize(64);
   textAlign(CENTER, CENTER);
-  print_links();
   textFont('Love Ya Like A Sister');
+  fade = 0
 
   s = new Snake();
   k = new Snake();
@@ -80,15 +83,25 @@ function draw() {
   }
 }
 
+
+
 function go() {
   background(48, 117, 187);
+  image(borderImg, 0, 0);
   fill(67, 71, 62);
-  text('Are you ready!? Click To Start', width / 2, height / 5.5);
-  text('Angel: Arrow Control', width / 2, height / 1.2);
-  text('Devil: W,S,A,D', width / 2, height / 1.5);
-  text('10 Point to win', width / 2, height / 3);
-  text('No BACKWARD,Dont hit YOURSELF', width / 2, height / 2);
+  textSize(26 );
+  text('In 2019, the demon creates an infectious disease and puts it in a bats body.', width / 2, height*.2);
+  text('A farmer inadvertently ate the bat then the demon disease infected him immediately.', width / 2, height*.3);
+  text('But the disease is cunning, it doesnt have any symptoms when the farmer gets it. ', width / 2, height*.4);
+  text('The farmer keeps working and handouts with his friends in the next couple of days.', width / 2, height*.5);
+  text('However, the demon disease spread out to anywhere in the world.', width / 2, height*.6);
+  text('Many people are dead and fear full of the world.', width / 2, height*.7);
+  textSize(36 );
+  text('~Start!~', width / 2, height*.85);
+
 }
+
+
 
 function play() {
   // setTimeout(1000);
@@ -143,7 +156,7 @@ function play() {
 function won() {
   background(random(255), random(255), random(255));
   text('YOU WIN!!', width / 2, height / 2);
-  text(player,width/3,height/3.5);
+  text(player, width / 3, height / 3.5);
 
 }
 
@@ -162,8 +175,24 @@ function mousePressed() {
 }
 
 function goMousePressed() {
+  $(document).ready(function(){
+      $("#div1").fadeIn(3000);
+  });
+
+  $(document).ready(function(){
+      $("#div1").fadeOut(3000);
+  });
+
+  $(document).ready(function(){
+      $("#div2").fadeIn(3000);
+  });
+
+  $(document).ready(function(){
+      $("#div2").fadeOut(3000);
+  });
   state = 'play';
 }
+
 
 
 function keyPressed() {
@@ -191,14 +220,4 @@ function keyPressed() {
     text('Paused', width / 2, height / 2);
 
   }
-}
-
-function print_links() {
-  print("https://discourse.processing.org/t/how-to-use-google-fonts-in-p5js-online-editor/6893");
-  print("https://www.youtube.com/watch?v=3BanVQvCN6U&feature=youtu.be");
-  print("https://fonts.google.com/specimen/Orbitron?selection.family=Orbitron");
-  print("https://developers.google.com/fonts/docs/getting_started");
-  print("new example adobe font: https://editor.p5js.org/kll/sketches/lhMj7jtAs");
-  print("example font file load: https://editor.p5js.org/kll/sketches/5eAJTcNGR");
-  print("example normal text: https://editor.p5js.org/kll/sketches/E7oh0oCjq");
 }
