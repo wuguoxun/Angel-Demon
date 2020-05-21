@@ -134,12 +134,12 @@ function play() {
     }
 
     // first snake
-    s.death(player[0].name, 50, 50)
+    s.death()
     s.update();
     s.show(a, b, color);
     s.win();
     // second snake
-    k.death(player[1].name, 50, 50)
+    k.death()
     k.update();
     push();
     tint(255, 53, 104);
@@ -156,7 +156,6 @@ function play() {
 function won() {
   background(random(255), random(255), random(255));
   text('YOU WIN!!', width / 2, height / 2);
-  // text(player, width / 3, height / 3.5);
 
 }
 
