@@ -44,7 +44,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200, 600);
+  createCanvas(1000, 500);
   textSize(64);
   textAlign(CENTER, CENTER);
   textFont('Love Ya Like A Sister');
@@ -89,7 +89,7 @@ function go() {
   background(48, 117, 187);
   image(borderImg, 0, 0);
   fill(67, 71, 62);
-  textSize(26 );
+  textSize(20);
   text('In 2019, the demon creates an infectious disease and puts it in a bats body.', width / 2, height*.2);
   text('A farmer inadvertently ate the bat then the demon disease infected him immediately.', width / 2, height*.3);
   text('But the disease is cunning, it doesnt have any symptoms when the farmer gets it. ', width / 2, height*.4);
@@ -156,7 +156,7 @@ function play() {
 function won() {
   background(random(255), random(255), random(255));
   text('YOU WIN!!', width / 2, height / 2);
-  text(player, width / 3, height / 3.5);
+  // text(player, width / 3, height / 3.5);
 
 }
 
